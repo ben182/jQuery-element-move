@@ -587,7 +587,14 @@
 	};
 });
 
-
+// jquery.element.move
+//
+// 1.0.0
+//
+// Benjamin Bortels
+//
+// Query-element-move is a simple jQuery plugin, that allows you to make HTML elements 
+// movable. This works in any browser, including mobile touch events.
 
 (function( $ ) {
 
@@ -621,11 +628,12 @@
 	        backToOrigin: false,
 	        backToOriginAnimation: 'cubic-bezier(0.39, 0.58, 0.54, 1.42)',
 	        backToOriginAnimationDuration: 0.5,
-	        swipeDirection: 4, //0 : x, 1 : y, 2 : full, 3 : up, 4 : down, 5 : right, 6 : left
+	        swipeDirection: 2, //0 : x, 1 : y, 2 : full, 3 : up, 4 : down, 5 : right, 6 : left
 	        momentum: false,
 	        xScrollAmount: 1,
 	        yScrollAmount: 1,
 	        scrollAmountCallback: function() {},
+	        moveCallback: function() {},
 	        endCallback: function() {}
 	    }, options);
 
@@ -638,6 +646,7 @@
 
 			xOld = 0;
 			yOld = 0;
+			console.log(xStart, yStart);
 
 		})
 		.bind('move', function(e) {
@@ -651,12 +660,9 @@
 				xPos = xPos - xEnd;
 			}
 
-			if (yPos) {
+			if (yEnd) {
 				yPos = yPos - yEnd;
 			}
-
-			
-
 
 			switch(settings.swipeDirection) {
 			    case 0:
@@ -711,23 +717,22 @@
 					momentumAllowed = true;
 			}
 
-
 			var xScrollAmountArea = $this.width() * settings.xScrollAmount;
 			var yScrollAmountArea = $this.height() * settings.yScrollAmount;
 
-			if (xPos > xScrollAmountArea || xPos < (xScrollAmountArea * -1) || yPos > yScrollAmountArea || yPos < (yScrollAmountArea * -1)) {
+			if ((xPos > xScrollAmountArea || xPos < (xScrollAmountArea * -1) || yPos > yScrollAmountArea || yPos < (yScrollAmountArea * -1)) && typeof settings.scrollAmountCallback == 'function') {
 				
-				settings.scrollAmountCallback();
+				settings.scrollAmountCallback($this);
 				
-			}
-
-				
-				
+			}	
 
 			xLastChange = e.deltaX; //Momentum
 		  	yLastChange = e.deltaY; //Momentum
 
-			
+		  	if (typeof settings.moveCallback == 'function') {
+
+				settings.moveCallback($this, xPos, yPos);
+			}
 		  
 		})
 		.bind('moveend', function() {
@@ -794,10 +799,10 @@
 					/* End Momentum */
 				}
 			}
-
+			
 			if (typeof settings.endCallback == 'function') {
-				//settings.endCallback.call(this);
-				settings.endCallback(xPos, yPos);
+
+				settings.endCallback($this, xEnd * -1, yEnd * -1);
 			}
 
 		});
