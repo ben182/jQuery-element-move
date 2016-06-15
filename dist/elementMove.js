@@ -646,7 +646,6 @@
 
 			xOld = 0;
 			yOld = 0;
-			console.log(xStart, yStart);
 
 		})
 		.bind('move', function(e) {
