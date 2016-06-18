@@ -622,6 +622,21 @@
 
 		var $this = $(this);
 
+		var offsetTop;
+		var offsetLeft;
+		var offsetRight;
+		var offsetBottom;
+
+		var borderScrollTop;
+		var borderScrollLeft;
+		var borderScrollRight;
+		var borderScrollBottom;
+
+		var initOffsetTop;
+		var initOffsetLeft;
+		var initOffsetRight;
+		var initOffsetBottom;
+
 	    //Options
 	    var settings = $.extend({
 	        // These are the defaults.
@@ -630,6 +645,7 @@
 	        backToOriginAnimationDuration: 0.5,
 	        swipeDirection: 2, //0 : x, 1 : y, 2 : full, 3 : up, 4 : down, 5 : right, 6 : left
 	        momentum: false,
+	        stayInElement: false,
 	        xScrollAmount: 1,
 	        yScrollAmount: 1,
 	        scrollAmountCallback: function() {},
@@ -647,6 +663,38 @@
 			xOld = 0;
 			yOld = 0;
 
+			//respect border
+
+			if (settings.stayInElement) {
+			
+				offsetTop = $this.offset().top - $(settings.stayInElement).offset().top;
+				offsetLeft = $this.offset().left - $(settings.stayInElement).offset().left;
+				offsetRight = $(settings.stayInElement).outerWidth(true) - offsetLeft - $this.outerWidth(true);
+				offsetBottom = $(settings.stayInElement).outerHeight(true) - offsetTop - $this.outerHeight(true);
+
+				if (!initOffsetTop) {
+					initOffsetTop = offsetTop;
+				}
+
+				if (!initOffsetLeft) {
+					initOffsetLeft = offsetLeft;
+				}
+
+				if (!initOffsetRight) {
+					initOffsetRight = offsetRight;
+				}
+
+				if (!initOffsetBottom) {
+					initOffsetBottom = offsetBottom;
+				}
+
+				borderScrollTop = yStart - offsetTop;
+				borderScrollLeft = xStart - offsetLeft;
+				borderScrollRight = xStart + offsetRight;
+				borderScrollBottom = yStart + offsetBottom;
+
+			}
+
 		})
 		.bind('move', function(e) {
 
@@ -661,6 +709,58 @@
 
 			if (yEnd) {
 				yPos = yPos - yEnd;
+			}
+
+			if (settings.stayInElement) {
+
+				//top left corner
+				if (e.pageX < borderScrollLeft && e.pageY < borderScrollTop) {
+					$this.css('transform', 'translate3d(' + -initOffsetLeft + 'px, ' + -initOffsetTop + 'px, 0px)');
+					return false;
+				}
+
+				//top right corner
+				if (e.pageX > borderScrollRight && e.pageY < borderScrollTop) {
+					$this.css('transform', 'translate3d(' + initOffsetRight + 'px, ' + -initOffsetTop + 'px, 0px)');
+					return false;
+				}
+
+				//bottom right corner
+				if (e.pageX > borderScrollRight && e.pageY > borderScrollBottom) {
+					$this.css('transform', 'translate3d(' + initOffsetRight + 'px, ' + initOffsetBottom + 'px, 0px)');
+					return false;
+				}
+
+				//bottom left corner
+				if (e.pageX < borderScrollLeft && e.pageY > borderScrollBottom) {
+					$this.css('transform', 'translate3d(' + -initOffsetLeft + 'px, ' + initOffsetBottom + 'px, 0px)');
+					return false;
+				}
+				
+				//left
+				if (e.pageX < borderScrollLeft) {
+					$this.css('transform', 'translate3d(' + -initOffsetLeft + 'px, ' + yPos + 'px, 0px)');
+					return false;
+				}
+
+				//right
+				if (e.pageX > borderScrollRight) {
+					$this.css('transform', 'translate3d(' + initOffsetRight + 'px, ' + yPos + 'px, 0px)');
+					return false;
+				}
+
+				//top
+				if (e.pageY < borderScrollTop) {
+					$this.css('transform', 'translate3d(' + xPos + 'px, ' + -initOffsetTop + 'px, 0px)');
+					return false;
+				}
+
+				//bottom
+				if (e.pageY > borderScrollBottom) {
+					$this.css('transform', 'translate3d(' + xPos + 'px, ' + initOffsetBottom + 'px, 0px)');
+					return false;
+				}
+
 			}
 
 			switch(settings.swipeDirection) {
@@ -744,11 +844,37 @@
 				xEnd = parseInt(transform[4] * -1);
 				yEnd = parseInt(transform[5] * -1);
 
+				/* Momentum */
 				if (settings.momentum) {
 
-					/* Momentum */
 					xEnd = (xEnd * -1) + (xLastChange * 4);
 					yEnd = (yEnd * -1) + (yLastChange * 4);
+					
+					//respect border
+					
+					if (settings.stayInElement) {
+
+						if (xEnd > initOffsetRight) {
+
+							xEnd = initOffsetRight;
+						}
+
+						if (xEnd < initOffsetLeft * -1) {
+
+							xEnd = initOffsetLeft * -1;
+						}
+
+						if (yEnd < initOffsetTop * -1) {
+
+							yEnd = initOffsetTop * -1;
+						}
+
+						if (yEnd > initOffsetBottom) {
+
+							yEnd = initOffsetBottom;
+						}
+
+					}
 
 					$this.css('transition', 'all .5s cubic-bezier(0.01, 0.47, 0.38, 1.05)');
 

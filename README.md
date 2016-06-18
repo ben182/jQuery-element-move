@@ -29,10 +29,11 @@ $('#container').elementMove({
 | `backToOriginAnimationDuration` | Control the animation time. | Number | 0.5 |
 | `swipeDirection` | Customize the Direction of moving. 0 => only x-axis, 1 => only y-axis, 2 => full movement, 3 => only upwards, 4 => only downwards, 5 => only to the right, 6 => only to the left. | Number | 2 |
 | `momentum` | You can enable momentum movement. If so, the element will move very fluid and gets extra movement based on previous acceleration afterwords. | Boolean | false |
+| `stayInElement` | Your element will not move out of this. | String | false |
 | `xScrollAmount` | You are able to specify a percantage of the element. When you scroll past this value on the x-axis, `scrollAmountCallback` will fire. | Number | 1 |
 | `yScrollAmount` | You are able to specify a percantage of the element. When you scroll past this value on the y-axis, `scrollAmountCallback` will fire. | Number | 1 |
 | `scrollAmountCallback` | Already explained above. Parameters: this. | Callback Function |  |
-| `moveCallback` | CCallback Function that fires when the element moves. Parameters: this, xPos(gives the pixel offset on x-axis to the start position), yPos(gives the pixel offset on y-axis to the start position). | Callback Function |  |
+| `moveCallback` | Callback Function that fires when the element moves. Parameters: this, xPos(gives the pixel offset on x-axis to the start position), yPos(gives the pixel offset on y-axis to the start position). | Callback Function |  |
 | `endCallback` | Callback Function that fires when you release the element. Parameters: this, xPos(gives the pixel offset on x-axis to the start position), yPos(gives the pixel offset on y-axis to the start position). | Callback Function |  |
 
 

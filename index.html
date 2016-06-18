@@ -140,6 +140,13 @@ swipeDirection: 1
   </tr>
 
   <tr>
+    <td>stayInElement</td>
+    <td>Your element will not move out of this.</td>
+    <td>String</td>
+    <td>false</td>
+  </tr>
+
+  <tr>
     <td>xScrollAmount</td>
     <td>You are able to specify a percantage of the element. When you scroll past this value on the x-axis, `scrollAmountCallback` will fire.</td>
     <td>Number</td>
@@ -287,6 +294,19 @@ $('#demo6 .demoElement').elementMove({
   </pre>
 </div>
 
+<div id="demo7" class="demoBox">
+  <div class="demoElement"></div>
+</div>
+<div class="codeBox">
+  <pre>
+    <code class="js">
+$('#demo7 .demoElement').elementMove({
+  stayInElement: '#demo7'
+});
+    </code>
+  </pre>
+</div>
+
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h3>
 
@@ -361,6 +381,9 @@ $('#demo6 .demoElement').elementMove({
 
           $('#demo6 .end').html('end! ' + x + 'x |' + y + 'y');
         }
+      });
+      $('#demo7 .demoElement').elementMove({
+        stayInElement: '#demo7'
       });
     </script>
   </body>
