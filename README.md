@@ -42,6 +42,9 @@ $('#container').elementMove({
 
 Distributed under the MIT license.
 
+##Buy me a coffee
+[Donate](https://ko-fi.com/A6749M1)
+
 ##Contact me
 
 Feel free to contact me on Twitter [@beno182](https://twitter.com/beno182)
