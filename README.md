@@ -43,7 +43,7 @@ $('#container').elementMove({
 Distributed under the MIT license.
 
 ##Buy me a coffee
-[Donate](https://ko-fi.com/A6749M1)
+<a href="https://ko-fi.com/A6749M1" target="_blank">Donate</a>
 
 ##Contact me
 
