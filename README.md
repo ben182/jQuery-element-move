@@ -1,6 +1,7 @@
 # jQuery-element-move
 
 [![GitHub release](https://img.shields.io/github/release/ben182/jQuery-element-move.svg)]()
+[![Bower](https://img.shields.io/bower/v/jQuery-element-move.svg)](https://github.com/ben182/jQuery-element-move)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/bbortels)
 [![Gitter](https://img.shields.io/gitter/room/jQuery-element-move/Stardust.svg)](https://gitter.im/jQuery-element-move/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
@@ -11,10 +12,18 @@ jQuery-element-move is a simple jQuery plugin, that allows you to make HTML elem
 Check out: https://ben182.github.io/jQuery-element-move
 
 ## How to use?
+### Bower
+```
+bower install jQuery-element-move
+```
+
+### Old traditional way
 jQuery-element-move depends on jQuery. Include them both in end of your HTML code:
 ```
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="jquery.element.move.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 <script>
 // To use with default settings
 $('#container').elementMove();
@@ -53,4 +62,3 @@ Distributed under the MIT license.
 ##Contact me
 
 Feel free to contact me on Twitter [@beno182](https://twitter.com/beno182)
-
