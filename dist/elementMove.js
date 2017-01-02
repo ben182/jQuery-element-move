@@ -1,10 +1,10 @@
 // jquery.element.move
 //
-// 1.0.0
+// 2.0.0
 //
 // Benjamin Bortels
 //
-// Query-element-move is a simple jQuery plugin, that allows you to make HTML elements
+// jQuery-element-move is a simple jQuery plugin, that allows you to make HTML elements
 // movable. This works in any browser, including mobile touch events.
 
 (function($) {
