@@ -1,6 +1,7 @@
 # jQuery-element-move
 
 [![GitHub release](https://img.shields.io/github/release/ben182/jQuery-element-move.svg)]()
+[![Bower](https://img.shields.io/bower/v/jQuery-element-move.svg)](https://github.com/ben182/jQuery-element-move)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/bbortels)
 [![Gitter](https://img.shields.io/gitter/room/jQuery-element-move/Stardust.svg)](https://gitter.im/jQuery-element-move/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
