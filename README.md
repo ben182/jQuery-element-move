@@ -11,10 +11,18 @@ jQuery-element-move is a simple jQuery plugin, that allows you to make HTML elem
 Check out: https://ben182.github.io/jQuery-element-move
 
 ## How to use?
+### Bower
+```
+bower install jQuery-element-move
+```
+
+### Old traditional way
 jQuery-element-move depends on jQuery. Include them both in end of your HTML code:
 ```
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="jquery.element.move.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 <script>
 // To use with default settings
 $('#container').elementMove();
@@ -53,4 +61,3 @@ Distributed under the MIT license.
 ##Contact me
 
 Feel free to contact me on Twitter [@beno182](https://twitter.com/beno182)
-
