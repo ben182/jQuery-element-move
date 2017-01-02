@@ -1,0 +1,20 @@
+{
+  "name": "jQuery-element-move",
+  "homepage": "https://github.com/ben182/jQuery-element-move",
+  "authors": [
+    "ben182 <benjamin.bortels@kussin.de>"
+  ],
+  "description": "jQuery-element-move is a simple jQuery plugin, that allows you to make HTML elements movable. This works in any browser, including mobile touch events.",
+  "main": "dist/elementMove.min.js",
+  "dependencies": {
+    "jquery": "^3.1.1"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
