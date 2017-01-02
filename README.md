@@ -1,6 +1,8 @@
 # jQuery-element-move
 
+[![GitHub release](https://img.shields.io/github/release/ben182/jQuery-element-move.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/bbortels)
 
 jQuery-element-move is a simple jQuery plugin, that allows you to make HTML elements movable. This works in any browser, including mobile touch events.
 
