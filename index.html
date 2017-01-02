@@ -179,7 +179,7 @@ swipeDirection: 1
     <td>Callback Function that fires when you release the element. Parameters: this, xPos(gives the pixel offset on x-axis to the start position), yPos(gives the pixel offset on y-axis to the start position).</td>
     <td>Callback Function</td>
     <td></td>
-  </tr> 
+  </tr>
 
 </table>
 
@@ -286,7 +286,7 @@ $('#demo6 .demoElement').elementMove({
     $('#demo6 .move').html('moved! ' + x + 'x |' + y + 'y');
   },
   endCallback: function($this, x, y) {
-    
+
     $('#demo6 .end').html('end! ' + x + 'x |' + y + 'y');
   }
 });
@@ -314,7 +314,7 @@ $('#demo7 .demoElement').elementMove({
 
 <h3>
 <a class="anchor" href="#" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Donate</h3>
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type ='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#009cde', 'A6749M1');kofiwidget2.draw();</script> 
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type ='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#009cde', 'A6749M1');kofiwidget2.draw();</script>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact me</h3>
@@ -329,21 +329,14 @@ $('#demo7 .demoElement').elementMove({
 
     </section>
 
-    <script src="javascripts/jquery-1.12.4.min.js"></script>
+    <script src="javascripts/jquery-3.1.1.min.js"></script>
     <script src="dist/elementMove.min.js"></script>
     <script src="javascripts/highlight.pack.js"></script>
     <script>
       hljs.initHighlightingOnLoad();
-      $('#demo1 .demoElement').elementMove({
-        endCallback: function(x, y) {
-          console.log(x, y);
-        }
-      });
+      $('#demo1 .demoElement').elementMove();
       $('#demo2 .demoElement').elementMove({
-        momentum: true,
-        endCallback: function(x, y) {
-          console.log(x, y);
-        }
+        momentum: true
       });
       $('#demo3 .demoElement').elementMove({
         swipeDirection: 0,
@@ -368,7 +361,7 @@ $('#demo7 .demoElement').elementMove({
           }else if ($this.css('display') != 'none') {
             $this.css('opacity', percentage);
           }
- 
+
         }
       });
       $('#demo6 .demoElement').elementMove({
